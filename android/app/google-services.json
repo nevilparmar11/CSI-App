@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "75693697201",
+    "firebase_url": "https://csiddu-6b6f1.firebaseio.com",
+    "project_id": "csiddu-6b6f1",
+    "storage_bucket": "csiddu-6b6f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75693697201:android:ca1db7f2850b6ac6151a90",
+        "android_client_info": {
+          "package_name": "com.example.csi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75693697201-fn4pdnkm9gd9magi08jda1j24d90stnh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKA1_Cx7Rh7hTehFpM7Oa__gb52OQs6XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75693697201-fn4pdnkm9gd9magi08jda1j24d90stnh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
