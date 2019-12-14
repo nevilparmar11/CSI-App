@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     bool _seen = (prefs.getBool('seen') ?? false);
 
     if ( _seen ){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
     }
     else{
       prefs.setBool('seen', true);
@@ -70,14 +70,14 @@ class _SplashScreenState extends State<SplashScreen> {
                 children: <Widget>[
                   CircularProgressIndicator(),
                   Padding(
-			  	          padding: EdgeInsets.only(bottom: 20.0),
+			  	          padding: EdgeInsets.only(bottom: 35.0),
 		  		        ),
 		  		        Text(
-			  		        "LEARN.SHARE.GROW",
+			  		        "LEARN SHARE GROW",
 			  	  	      style: TextStyle(
 				 	            color: Colors.white,
-				  	          fontSize: 30.0,
-				  	          fontWeight: FontWeight.bold,
+				  	          fontSize: 20.0,
+				  	          fontWeight: FontWeight.w700
 			  		        ),
 				          ),
                 ],

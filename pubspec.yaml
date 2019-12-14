@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  dropdown_formfield: ^0.1.1
   firebase_auth: ^0.15.2
   cloud_firestore: ^0.13.0+1
   intro_slider: ^1.0.8

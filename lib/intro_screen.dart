@@ -56,11 +56,11 @@ class _intro_screenState extends State<intro_screen> {
   }
 
   void onDonePress() {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => HomePage()) );
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Login()) );
   }
 
   void onSkipPress() {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => HomePage()) );
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Login()) );
   }
 
   Widget renderNextBtn() {

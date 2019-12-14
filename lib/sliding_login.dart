@@ -1,7 +1,46 @@
 import 'package:csi/Animation/FadeAnimation.dart';
+import 'package:csi/SignUpPage.dart';
+import 'package:csi/main.dart';
+import 'package:csi/services/MainPage.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class HomePage extends StatelessWidget {
+class Login extends StatefulWidget {
+
+  static String email,password;
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+
+  final formKey = new GlobalKey<FormState>();
+
+  bool validateAndSave(){
+    final form  = formKey.currentState;
+    if(form.validate())
+    {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  validateAndGoToHome() async{
+    if(validateAndSave()){
+    AuthResult user = await FirebaseAuth.instance.signInWithEmailAndPassword(email:Login.email,password: Login.password );
+    if(user != null){
+      print("Login Successful");
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
+    }else{
+      print('Login Unsuccessful');
+    }
+    }else{
+      print('Form validation failed');
+    }
+  
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,36 +96,49 @@ class HomePage extends StatelessWidget {
                                   offset: Offset(0, 10)
                                 )]
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.white))
-                                    ),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: "Email",
-                                        hintStyle: TextStyle(color: Colors.black54),
-                                        border: new UnderlineInputBorder()
+                              child: Form(
+                                  key: formKey,
+                                  child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.white))
+                                      ),
+                                      child: TextFormField(
+                                        onSaved: (value){
+                                          setState(() {
+                                            Login.email = value;
+                                          });
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: "Email",
+                                          hintStyle: TextStyle(color: Colors.black54),
+                                          border: new UnderlineInputBorder()
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.white))
-                                    ),
-                                    child: TextField(
-                                      obscureText: true,
-                                      decoration: InputDecoration(
-                                        hintText: "Password",
-                                        hintStyle: TextStyle(color: Colors.black54),
-                                        border: new UnderlineInputBorder(),
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.white))
+                                      ),
+                                      child: TextFormField(
+                                        onSaved: (value){
+                                          setState(() {
+                                            Login.password = value;
+                                          });
+                                        },
+                                        obscureText: true,
+                                        decoration: InputDecoration(
+                                          hintText: "Password",
+                                          hintStyle: TextStyle(color: Colors.black54),
+                                          border: new UnderlineInputBorder(),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             )),
                             SizedBox(height: 40,),
@@ -99,8 +151,15 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                                 color:  Color(0xff003366)
                               ),
-                              child: Center(
-                                child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                              child: ButtonTheme(
+                                  height: 50,
+                                  minWidth: 200,
+                                  child: FlatButton(
+                                  child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 20),),
+                                  onPressed: (){
+                                    validateAndGoToHome();
+                                  },
+                                ),
                               ),
                             )),
                             SizedBox(height: 50,),
@@ -115,24 +174,14 @@ class HomePage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(50),
                                       color: Colors.blue
                                     ),
-                                    child: Center(
-                                      child: Text("Register New Account", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                    child: FlatButton(
+                                      child: Text("Register New Account", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 16),),
+                                      onPressed: (){
+                                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignUpPage()));
+                                      },
                                     ),
                                   )),
                                 ),
-                                // SizedBox(width: 30,),
-                                // Expanded(
-                                //   child: FadeAnimation(1.9, Container(
-                                //     height: 50,
-                                //     decoration: BoxDecoration(
-                                //       borderRadius: BorderRadius.circular(50),
-                                //       color: Colors.black
-                                //     ),
-                                //     child: Center(
-                                //       child: Text("Github", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                                //     ),
-                                //   )),
-                                // )
                               ],
                             )
                           ],
