@@ -1,7 +1,7 @@
 import 'package:csi/Animation/FadeAnimation.dart';
 import 'package:csi/SignUpPage.dart';
 import 'package:csi/main.dart';
-import 'package:csi/services/MainPage.dart';
+import 'package:csi/MainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

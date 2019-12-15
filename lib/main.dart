@@ -1,4 +1,4 @@
-import 'package:csi/services/MainPage.dart';
+import 'package:csi/MainPage.dart';
 import 'package:csi/sliding_login.dart';
 import 'package:flutter/material.dart';
 import 'package:csi/splash_screen.dart';
